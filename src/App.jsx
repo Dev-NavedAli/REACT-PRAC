@@ -1,20 +1,30 @@
-import React, { useEffect, useState } from 'react'
-
+import React, { useEffect, useState } from 'react';
 
 const App = () => {
-  const [count,setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
-  useEffect(()=>{
-    console.log("Button in clicked");
-    
-  },[count])
+  // Log when the count changes
+  useEffect(() => {
+    console.log('Button clicked');
+  }, [count]);
+
+  const buttonStyle = {
+    color: 'red',
+    backgroundColor: 'white',
+    fontWeight: 'bold', // Fixed invalid CSS property
+  };
+
+  const handleClick = () => {
+    setCount(count + 1);
+  };
+
   return (
     <>
-     <button onClick={()=>{
-      setCount(count+1)
-     }} >Click ME ! {count}</button> 
+      <button style={buttonStyle} onClick={handleClick}>
+        Click ME! {count}
+      </button>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
