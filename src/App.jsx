@@ -1,13 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import styled from "styled-components"
-function App() {
-  const DynamicButton = styled.button`
-    color: white;
-    background-color: blue;
-  `;
+import React, { useState } from 'react';
+import useDictionary from './hooks/useDictinary';
 
-  return <DynamicButton>Click Me</DynamicButton>;
-}
+const App = () => {
+  const [count, setCount] = useState(0);
+  const data = useDictionary(); // Calling the custom hook
 
+  const handleClick = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      <button onClick={handleClick}>
+        Click ME! {count}
+      </button>
+      {data}
+    </div>
+  );
+};
 
 export default App;
